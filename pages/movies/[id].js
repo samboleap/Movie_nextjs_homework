@@ -4,12 +4,12 @@ import { API_KEY, BASE_URL, BASE_PATH, YT } from "@/lib/constant";
 import { useEffect, useState } from "react";
 
 
-export default function About({ video }) {
+export default function Detail({ trailer }) {
   const router = useRouter();
   const [m, setMovie] = useState(JSON.parse(router.query.movie));
   const [key, setKey] = useState("")
   useEffect(() =>  {
-    setKey(video[video.length -1].key)
+    setKey(trailer[trailer.length -1].key)
   }, [])
   
 
@@ -60,7 +60,7 @@ export async function getServerSideProps({ params }) {
   const resp = await res.json();
   return {
     props: {
-      video: resp.results,
+      trailer: resp.results,
     },
   };
 }
